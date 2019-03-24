@@ -109,6 +109,8 @@ void DcTimeHeap::DelTop() {
 
         if (CompareTimer(heap_[cur_size_], heap_[ci]) > 0) {
             heap_[i] = heap_[ci];
+            heap_[i]->index_ = i;
+
             i = ci;
             ci = i * 2;
         } else {
@@ -116,6 +118,7 @@ void DcTimeHeap::DelTop() {
         }
     }
     heap_[i] = heap_[cur_size_];
+    heap_[i]->index_ = i;
     
     cur_size_--;
 }
